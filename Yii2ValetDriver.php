@@ -12,7 +12,7 @@ class Yii2ValetDriver extends ValetDriver
      */
     public function serves($sitePath, $siteName, $uri)
     {
-        if (file_exists($sitePath.'/../vendor/yiisoft/yii2/Yii.php')) {
+        if (file_exists($sitePath.'/../vendor/yiisoft/yii2/Yii.php') || file_exists($sitePath.'/vendor/yiisoft/yii2/Yii.php')) {
             return true;
         }
 
