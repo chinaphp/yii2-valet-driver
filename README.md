@@ -4,12 +4,21 @@ Yii2 Valet Driver
 > install 
 
 ```
-cp Yii2ValetDriver.php ~/.valet/Drivers/
+cd ~/.config/valet/Drivers/
+wget https://raw.githubusercontent.com/chinaphp/yii2-valet-driver/master/Yii2ValetDriver.php
 ```
 
+## yii2-app-basic
+
+```
+valet link app-name
+http://app-name.test
+```
+
+## yii2-app-advanced
 
 ```
 cd backend
 valet link backend-app-name
-http://backend-app-name.dev
+http://backend-app-name.test
 ```
