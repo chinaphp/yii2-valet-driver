@@ -21,4 +21,17 @@ http://app-name.test
 cd backend
 valet link backend-app-name
 http://backend-app-name.test
+
+cd frontend
+valet link frontend-app-name
+http://frontend-app-name.test
 ```
+if you want to use aliases domains list
+
+```
+cd assets
+valet link assets.example
+http://assets.example.test/no_image.png
+```
+
+require assets subdomain
