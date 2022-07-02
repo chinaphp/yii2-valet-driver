@@ -29,6 +29,12 @@ class Yii2ValetDriver extends ValetDriver
      */
     public function isStaticFile($sitePath, $siteName, $uri)
     {
+        // this works for domains called code assets
+        // for example your site name product.{valet-domen} assets domen is assets.product.{valet-domen}
+        if(preg_match("#^assets#", $siteName) ) {
+            return $sitePath.$uri;
+        }
+        
         if (file_exists($staticFilePath = $sitePath.'/web/'.$uri)) {
             return $staticFilePath;
         }
