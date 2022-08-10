@@ -35,7 +35,7 @@ class Yii2ValetDriver extends ValetDriver
             return $sitePath.$uri;
         }
         
-        if (file_exists($staticFilePath = $sitePath.'/web/'.$uri)) {
+        if (file_exists($staticFilePath = $sitePath.'/web/'.$uri) && ! is_dir ( $staticFilePath ) && pathinfo ( $staticFilePath )['extension'] != '.php') {
             return $staticFilePath;
         }
 
@@ -52,6 +52,20 @@ class Yii2ValetDriver extends ValetDriver
      */
     public function frontControllerPath($sitePath, $siteName, $uri)
     {
+
+        $uri_path = explode('/',$uri)[1];
+
+         
+        if (file_exists($sitePath.'/web/'. $uri_path . '/index.php') && !empty($uri_path)) {
+
+           $_SERVER['SCRIPT_FILENAME'] = $sitePath.'/web/' . $uri_path . '/index.php';
+           $_SERVER['SCRIPT_NAME'] = '/' . $uri_path . '/index.php';
+           $_SERVER['PHP_SELF'] = '/' . $uri_path . '/index.php';
+           $_SERVER['DOCUMENT_ROOT'] = $sitePath;
+
+           return $sitePath.'/web/' . $uri_path . '/index.php';
+       }
+
         $_SERVER['SERVER_NAME'] = $_SERVER['HTTP_HOST'];
         $_SERVER['SCRIPT_FILENAME'] = $sitePath.'/web/index.php';
         $_SERVER['SCRIPT_NAME'] = '/index.php';

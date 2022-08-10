@@ -35,3 +35,14 @@ http://assets.example.test/no_image.png
 ```
 
 require assets subdomain
+
+## yii2-app-advanced-with-single-domain
+
+
+
+```
+valet link app-name
+http://app-name.test/api/
+
+```
+
