@@ -52,9 +52,6 @@ class Yii2ValetDriver extends ValetDriver
      */
     public function frontControllerPath($sitePath, $siteName, $uri)
     {
-        if (file_exists($sitePath.'/web/backend/index.php')) {
-            return $sitePath.'/web/backend/index.php';
-        }
         $_SERVER['SERVER_NAME'] = $_SERVER['HTTP_HOST'];
         $_SERVER['SCRIPT_FILENAME'] = $sitePath.'/web/index.php';
         $_SERVER['SCRIPT_NAME'] = '/index.php';
