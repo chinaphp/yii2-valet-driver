@@ -1,4 +1,16 @@
 # yii2-valet-driver
+
+## update valet
+
+```bash
+composer global require laravel/valet
+```
+
+```bash
+valet install
+```
+
+
 Yii2 Valet Driver
 
 > install 

@@ -14,7 +14,7 @@ class Yii2ValetDriver extends ValetDriver
      * @param  string  $uri
      * @return bool
      */
-    public function serves($sitePath, $siteName, $uri)
+    public function serves(string $sitePath, string $siteName, string $uri): bool
     {
 
         if (file_exists($sitePath . '/yii')) {
@@ -35,7 +35,7 @@ class Yii2ValetDriver extends ValetDriver
      * @param  string  $uri
      * @return string|false
      */
-    public function isStaticFile($sitePath, $siteName, $uri)
+    public function isStaticFile(string $sitePath, string $siteName, string $uri)
     {
         // this works for domains called code assets
         // for example your site name product.{valet-domen} assets domen is assets.product.{valet-domen}
@@ -58,7 +58,7 @@ class Yii2ValetDriver extends ValetDriver
      * @param  string  $uri
      * @return string
      */
-    public function frontControllerPath($sitePath, $siteName, $uri)
+    public function frontControllerPath(string $sitePath, string $siteName, string $uri): string
     {
 
         $uri_path = explode('/', $uri)[1];
