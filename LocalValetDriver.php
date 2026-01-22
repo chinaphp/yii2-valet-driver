@@ -1,6 +1,5 @@
 <?php
 
-namespace Valet\Drivers\Custom;
 
 use Valet\Drivers\ValetDriver;
 
@@ -36,7 +35,7 @@ class LocalValetDriver extends ValetDriver
         $uriPath = trim($uri, '/');
         $segments = $uriPath === '' ? [] : explode('/', $uriPath);
         $entry = $segments[0] ?? '';
-        $entries = ['api', 'backend'];
+        $entries = ['api', 'backend', 'oauth2'];
 
         if ($entry !== '' && in_array($entry, $entries, true) && file_exists($sitePath . '/web/' . $entry . '/index.php')) {
             $_SERVER['SERVER_NAME'] = $_SERVER['HTTP_HOST'];
