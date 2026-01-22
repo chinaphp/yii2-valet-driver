@@ -4,19 +4,10 @@ namespace Valet\Drivers\Custom;
 
 use Valet\Drivers\ValetDriver;
 
-class Yii2ValetDriver extends ValetDriver
+class LocalValetDriver extends ValetDriver
 {
-    /**
-     * Determine if the driver serves the request.
-     *
-     * @param  string  $sitePath
-     * @param  string  $siteName
-     * @param  string  $uri
-     * @return bool
-     */
     public function serves(string $sitePath, string $siteName, string $uri): bool
     {
-
         if (file_exists($sitePath . '/yii')) {
             return true;
         }
@@ -27,18 +18,8 @@ class Yii2ValetDriver extends ValetDriver
         return false;
     }
 
-    /**
-     * Determine if the incoming request is for a static file.
-     *
-     * @param  string  $sitePath
-     * @param  string  $siteName
-     * @param  string  $uri
-     * @return string|false
-     */
     public function isStaticFile(string $sitePath, string $siteName, string $uri)
     {
-        // this works for domains called code assets
-        // for example your site name product.{valet-domen} assets domen is assets.product.{valet-domen}
         if (preg_match("#^assets#", $siteName)) {
             return $sitePath . $uri;
         }
@@ -50,14 +31,6 @@ class Yii2ValetDriver extends ValetDriver
         return false;
     }
 
-    /**
-     * Get the fully resolved path to the application's front controller.
-     *
-     * @param  string  $sitePath
-     * @param  string  $siteName
-     * @param  string  $uri
-     * @return string
-     */
     public function frontControllerPath(string $sitePath, string $siteName, string $uri): string
     {
         $uriPath = trim($uri, '/');
